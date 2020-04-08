@@ -1,7 +1,7 @@
 <!DOCTYPE mapper
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="cn.vic.mybatis01.user.dao.UserDao">
+<mapper namespace="com.vic.mapper.UserMapper">
 	
 	<!-- 实体类属性与数据库表字段不一致时，可以在这儿指定 -->
 	<resultMap id="userResultMap" type="User">
@@ -15,7 +15,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 
 	<!-- 小东西，可以简化开发 -->
 	<sql id="allColumns">
-		id, name, age, birthday, address
+		id, name, age, birthday, address, delete_flag
 	</sql>
 	
 	<!-- 通过ids查询数据集合 -->
@@ -43,8 +43,11 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    parameterType:参数类型 
 	    resultType:结果类型
 	    resultMap:返回为map需要前面指定
+
+	    如果入参为1个参数，可以不用写入参类型
+ 		如：parameterType="long" 可以省略
 	-->
-	<select id="queryById" parameterType="int" resultMap="userResultMap"><!-- resultType="User" -->
+	<select id="queryById" resultMap="userResultMap"><!-- resultType="User" -->
 		select 
 		<include refid="allColumns"/> 
 		from m_user where id = #{id};

@@ -1,6 +1,6 @@
-package com.vic.user.dao;
+package com.vic.mapper;
 
-import com.vic.user.entity.User;
+import com.vic.entity.User;
 
 import java.util.List;
 import java.util.Map;
@@ -10,14 +10,14 @@ import java.util.Map;
  * 用户dao
  * @author Victor
  */
-public interface UserDao {
+public interface UserMapper {
 	
 	/**
 	 * 根据用户id查询用户
 	 * @param id
 	 * @return
 	 */
-	User queryById(int id);
+	User queryById(Long id);
 	
 	/**
 	 * 新增用户
@@ -42,13 +42,13 @@ public interface UserDao {
 	 * @param id
 	 * @return
 	 */
-	Integer delete(int id);
+	Integer delete(Long id);
 	
 	/**
 	 * 根据ids查询用户列表
 	 * @return
 	 */
-	List<User> queryByIds(List<Integer> idList);
+	List<User> queryByIds(List<Long> idList);
 	
 	/**
 	 * 模糊分页查询

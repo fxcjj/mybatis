@@ -20,14 +20,15 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<settings>
 		<setting name="logImpl" value="LOG4J" />
 	</settings>
-	
+
 	<!-- 别名 -->
 	<typeAliases>
-		<!-- <package name=""/> -->
+		<!-- 也可以指定一个包名，MyBatis会在包名下面搜索需要的 Java Bean -->
+		<!-- <package name="com.vic.user.entity"/> -->
 	
-		<typeAlias type="cn.vic.mybatis01.user.entity.User" alias="User"/>
+		<typeAlias type="com.vic.entity.User" alias="User"/>
 	</typeAliases>
-	
+
 	<!--  -->
 	<environments default="development">
 		<!-- development -->
@@ -59,6 +60,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	
 	<!-- 映射文件 -->
 	<mappers>
-		<mapper resource="cn/vic/mybatis01/user/map/User.xml" />
+		<mapper resource="mapper/UserMapper.xml" />
 	</mappers>
 </configuration>

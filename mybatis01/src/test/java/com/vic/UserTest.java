@@ -1,8 +1,8 @@
 package com.vic;
 
 
-import com.vic.user.dao.UserDao;
-import com.vic.user.entity.User;
+import com.vic.mapper.UserMapper;
+import com.vic.entity.User;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.Configuration;
 import org.apache.ibatis.session.SqlSession;
@@ -12,6 +12,8 @@ import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
 import java.io.Reader;
@@ -27,7 +29,10 @@ public class UserTest {
 	
 	SqlSessionFactory sqlSessionFactory = null;
 	SqlSession sqlSession = null;
-	UserDao userDao = null;
+	UserMapper userMapper = null;
+
+	// 使用slf4j-api中的接口
+	Logger log = LoggerFactory.getLogger(UserTest.class);
 	
 	@Before
 	public void getSessionFactory() {
@@ -37,7 +42,8 @@ public class UserTest {
 			reader = Resources.getResourceAsReader(conf);
 			sqlSessionFactory  = new SqlSessionFactoryBuilder().build(reader);
 			sqlSession = sqlSessionFactory.openSession();
-			userDao = sqlSession.getMapper(UserDao.class);
+			userMapper = sqlSession.getMapper(UserMapper.class);
+			log.info("加载mybatis-config.xml完成");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -49,12 +55,12 @@ public class UserTest {
 	@After
 	public void closeSessionFactory() {
 		sqlSession.close();
-		System.out.println("done...");
+		log.info("关闭session完成");
 	}
 
 	@Test
 	public void testQueryById() {
-		User user = userDao.queryById(1);
+		User user = userMapper.queryById(1L);
 		System.out.println(user);
 		
 		Assert.assertNotNull("没找到数据", user);
@@ -62,11 +68,11 @@ public class UserTest {
 	
 	@Test
 	public void testQueryByIds() {
-		List<Integer> idList = new ArrayList<Integer>();
-		idList.add(1);
-		idList.add(2);
-		idList.add(3);
-		List<User> userList = userDao.queryByIds(idList);
+		List<Long> idList = new ArrayList<Long>();
+		idList.add(1L);
+		idList.add(2L);
+		idList.add(3L);
+		List<User> userList = userMapper.queryByIds(idList);
 		System.out.println(userList);
 	}
 	
@@ -76,7 +82,7 @@ public class UserTest {
 //		param.put("hello", "上海");
 		param.put("startIndex", 0);
 		param.put("pageSize", 10);
-		List<User> fuzzyByCondition = userDao.fuzzyByCondition(param);
+		List<User> fuzzyByCondition = userMapper.fuzzyByCondition(param);
 		System.out.println(fuzzyByCondition);
 	}
 	
@@ -87,19 +93,19 @@ public class UserTest {
 		user.setAge(12);
 		user.setBirthday(new Date());
 		user.setName("name1");
-		userDao.insert(user);
+		userMapper.insert(user);
 	}
 	
 	@Test
 	public void testUpdate() {
 		User user = new User();
-		user.setId(3);
+//		user.setId(3L);
 		user.setAddress("上海静安区1");
 		user.setAge(0);
 		user.setBirthday(new Date());
 		user.setName("marti11n");
 		user.setDeleteFlag(1);
-		userDao.update(user);
+		userMapper.update(user);
 	}
 	
 	
