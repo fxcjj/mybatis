@@ -38,27 +38,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="com.vic.entity.User" alias="User"/>
 	</typeAliases>
 
-	<!-- 自定义 typeHandler -->
-	<typeHandlers>
-		<!--
-		因为在类中已经指定了jdbcType(使用@MappedJdbcTypes)/javaType(使用@MappedTypes)，
-		所以这里不用再次指定jdbcType/javaType
-		-->
-		<typeHandler handler="com.vic.typehandler.WeiredTypeHandler" />
-	</typeHandlers>
-
-	<!-- 自定义 objectFactory -->
-	<objectFactory type="com.vic.objectfactory.SterilizeObjectFactory">
-		<property name="hello" value="gun"/>
-	</objectFactory>
-
-	<!-- 自定义 plugin -->
-	<!--<plugins>
-		<plugin interceptor="com.vic.plugin.AdverselyPlugin">
-			<property name="clause" value="out of my office"/>
-		</plugin>
-	</plugins>-->
-
 	<!-- 环境配置 -->
 	<environments default="development">
 		<!-- development -->
