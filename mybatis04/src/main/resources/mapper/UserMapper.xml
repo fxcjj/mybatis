@@ -18,6 +18,26 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		id, name, age, birthday, address, delete_flag
 	</sql>
 	
+	<!-- 通过ids查询数据集合 -->
+	<select id="queryByIds" resultMap="userResultMap">
+		select 
+		<include refid="allColumns" />
+		from m_user 
+		where delete_flag = 1 
+		and id in
+		<trim suffixOverrides=" or id in ()">
+			<foreach item="item" index="index" collection="list" open="(" close=")">
+				<if test="index != 0">
+					<choose>
+					<when test="index % 1000 == 999">) or id in (</when>
+					<otherwise>,</otherwise>
+					</choose>
+				</if>
+				#{item}
+			</foreach>
+		</trim>
+	</select>
+	
 	<!-- 
 		id:sql的唯一标示 
 	    parameterType:参数类型 
@@ -31,6 +51,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		select 
 		<include refid="allColumns"/> 
 		from m_user where id = #{id};
+	</select>
+	
+	<!-- resultType:结果类型-->
+	<select id="selectUserById4Map" parameterType="string" resultType="hashmap">
+		select 
+		<include refid="allColumns"/> 
+		from m_user 
+		where id = #{id}
 	</select>
 	
 	<!-- 插入一条数据 -->
@@ -73,5 +101,77 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		insert into m_user(name, age, birthday, address)
 		values(#{name}, #{age}, #{birthday}, #{address});
 	</insert>
+
+	<!-- 根据id修改数据 -->
+	<update id="update" parameterType="User">
+		update m_user
+		set name=#{name},
+		<if test="age != null"><!-- and age != '' 当值允许为0时，此条件不能加！ -->
+		age=#{age},
+		</if>
+		birthday=#{birthday},
+		address=#{address}
+		where id=#{id};
+	</update>
+
+	<!-- 动态sql：动态更新 -->
+	<update id="updateBySelective" parameterType="User">
+		update m_user
+		<set>
+			<if test="name != null">
+				name = #{name},
+			</if>
+			<if test="age != null">
+				age = #{age}
+			</if>
+			<if test="birthday != null">
+				birthday = #{birthday}
+			</if>
+			<if test="address != null">
+				address = #{address}
+			</if>
+		</set>
+		where id = #{id};
+	</update>
+
+	<!-- 动态sql：模糊查询 -->
+	<select id="fuzzyByCondition" parameterType="hashmap" resultMap="userResultMap">
+		select
+		<include refid="allColumns"/>
+		from m_user where 1=1
+		<if test="name != null">
+			and name like concat('%',#{name},'%')
+		</if>
+		<if test="hello != null">
+			and address like concat('%',#{hello},'%')
+		</if>
+		limit #{startIndex}, #{pageSize}
+	</select>
+
+	<!-- 逻辑删除用户 -->
+	<update id="delete">
+		update m_user
+		set
+		delete_flag = 2
+		where id = #{id};
+	</update>
+
+	<!-- <update id="batchUpdate" parameterType="java.util.List">
+	   update p_user_role_mapping
+	   set modify_time = now()
+	   , user_role_id = 
+	   <foreach collection="list" item="item" index="index" separator=" " open="case ID" close="end">
+	     when #{item.id} then #{item.user_role_id}
+	   </foreach>
+	   , modify_id = 
+	   <foreach collection="list" item="item" index="index" separator=" " open="case ID" close="end">
+	     when #{item.id} then #{item.modify_id}
+	   </foreach>
+	    where id in
+	   <foreach collection="list" index="index" item="item" separator="," open="(" close=")">
+	     #{item.id}
+	   </foreach>
+	    
+	 </update> -->
 	
 </mapper>

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<!-- 指定jdbc有两种方式 -->
+	<!-- 方式一： 指定properties文件，数据库相关配置 -->
+	<properties resource="jdbc.properties" />
+	
+	<!-- 方式二：xml配置 -->
+	<!-- <properties>
+ 		<property name="driver" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/test1"/>
+		<property name="username" value="root"/>
+		<property name="password" value="root"/>
+	</properties> -->
+	
+	<!-- 指定mybatis使用log4j日志 -->
+	<settings>
+		<setting name="logImpl" value="LOG4J" />
+	</settings>
+
+	<!-- 别名 -->
+	<typeAliases>
+		<!--
+		第1种方式
+		通过package, 可以直接指定package的名字， mybatis会自动扫描你指定包下面的javabean,
+		并且默认设置一个别名，默认的名字为： javabean 的首字母小写的非限定类名来作为它的别名。
+		也可在javabean 加上注解@Alias 来自定义别名， 例如： @Alias(user)
+       -->
+		 <!--<package name="com.vic.entity"/>-->
+
+		<!--
+		第2种方式
+		在UserMapper.xml文件中，声明parameterType="User"时，不区分大小写
+		-->
+		<typeAlias type="com.vic.entity.User" alias="User"/>
+	</typeAliases>
+
+	<!-- 环境配置 -->
+	<environments default="development">
+		<!-- development -->
+		<environment id="development">
+			<!-- <transactionManager type="JDBC" /> -->
+			
+			<transactionManager type="MANAGED">
+				<property name="closeConnection" value="false"/>
+			</transactionManager>
+			
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+		
+		<environment id="test">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="com.mysql.jdbc.Driver"/>
+				<property name="url" value="jdbc:mysql://localhost:3306/test1"/>
+				<property name="username" value="root"/>
+				<property name="password" value="root"/>
+			</dataSource>
+		</environment>
+	</environments>
+
+	<!-- 映射文件 -->
+	<mappers>
+		<mapper resource="mapper/UserMapper.xml" />
+	</mappers>
+</configuration>
