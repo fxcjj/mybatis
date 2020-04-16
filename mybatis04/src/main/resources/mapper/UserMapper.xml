@@ -5,7 +5,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	
 	<!-- 实体类属性与数据库表字段不一致时，可以在这儿指定 -->
 	<resultMap id="userResultMap" type="User">
-		<id  property="id" column="id"/>
+		<!-- property指定javabean主键，cloumn指定数据表字段主键 -->
+		<id property="id" column="id"/>
+		<!-- 普通属性、字段名映射 -->
 		<result property="name" column="name"/>
 		<result property="age" column="age"/>
 		<result property="birthday" column="birthday"/>
@@ -53,8 +55,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		from m_user where id = #{id};
 	</select>
 	
-	<!-- resultType:结果类型-->
-	<select id="selectUserById4Map" parameterType="string" resultType="hashmap">
+	<!--
+	这个语句名为 selectUserById4Map，接受一个int（或 Integer）类型的参数，并返回一个 HashMap 类型的对象，其中的键是列名，值便是结果行中的对应值。
+	-->
+	<select id="selectUserById4Map" parameterType="long" resultType="hashmap">
 		select 
 		<include refid="allColumns"/> 
 		from m_user 
@@ -65,6 +69,14 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	<insert id="insert" parameterType="User"><!-- parameterType="hashmap" -->
 		insert into m_user(name, age, birthday, address, delete_flag)
 		values(#{name}, #{age}, #{birthday}, #{address}, 1);
+	</insert>
+
+	<!-- 插入多条数据 -->
+	<insert id="batchInsert" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+		insert into m_user(name, age, birthday, address) values
+		<foreach item="item" collection="list" separator=",">
+			(#{item.name}, #{item.age}, #{item.birthday}, #{item.address})
+		</foreach>
 	</insert>
 
 	<!-- 插入用户后返回id 方式1

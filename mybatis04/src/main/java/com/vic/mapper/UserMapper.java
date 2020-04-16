@@ -2,6 +2,7 @@ package com.vic.mapper;
 
 import com.vic.entity.User;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +24,14 @@ public interface UserMapper {
 	 * 新增用户
 	 * @param user
 	 */
-	Integer insert(User user);
+	int insert(User user);
+
+	/**
+	 * 插入多条数据
+	 * @param users
+	 * @return
+	 */
+	int batchInsert(List<User> users);
 
 	/**
 	 * 插入用户后返回id
@@ -70,5 +78,12 @@ public interface UserMapper {
 	 * @return
 	 */
 	List<User> fuzzyByCondition(Map<String, Object> param);
+
+	/**
+	 * 根据用户id查询用户，返回hashmap
+	 * @param id
+	 * @return
+	 */
+    HashMap<String, Object> selectUserById4Map(long id);
 
 }

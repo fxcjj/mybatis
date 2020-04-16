@@ -8,7 +8,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -54,13 +53,34 @@ public class UserTest {
 		sqlSession.close();
 	}
 
+	/**
+	 * 返回map
+	 */
+	@Test
+	public void testSelectUserById4Map() {
+		HashMap<String, Object> userMap = userMapper.selectUserById4Map(1L);
+		System.out.println(userMap);
+	}
+
+	/**
+	 * 批量插入用户
+	 */
+	@Test
+	public void testBatchInsert() {
+		List<User> users = new ArrayList<>();
+		users.add(new User("name1", 1, new Date(), "addr1"));
+		users.add(new User("name2", 2, new Date(), "addr2"));
+		users.add(new User("name3", 3, new Date(), "addr3"));
+		int row = userMapper.batchInsert(users);
+		System.out.println(row); //3
+	}
+
 	@Test
 	public void testQueryById() {
 		User user = userMapper.queryById(1L);
 		System.out.println(user);
-		Assert.assertNotNull("没找到数据", user);
 	}
-	
+
 	@Test
 	public void testQueryByIds() {
 		List<Long> idList = new ArrayList<Long>();

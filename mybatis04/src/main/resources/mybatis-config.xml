@@ -36,6 +36,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		在UserMapper.xml文件中，声明parameterType="User"时，不区分大小写
 		-->
 		<typeAlias type="com.vic.entity.User" alias="User"/>
+		<typeAlias type="com.vic.entity.Order" alias="Order"/>
 	</typeAliases>
 
 	<!-- 环境配置 -->
@@ -70,5 +71,6 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<!-- 映射文件 -->
 	<mappers>
 		<mapper resource="mapper/UserMapper.xml" />
+		<mapper resource="mapper/OrderMapper.xml" />
 	</mappers>
 </configuration>

@@ -1,0 +1,42 @@
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vic.mapper.OrderMapper">
+	
+	<!-- 实体类属性与数据库表字段不一致时，可以在这儿指定 -->
+	<resultMap id="orderResultMap" type="Order">
+		<id property="id" column="id"/>
+		<result property="goodsName" column="goods_name"/>
+		<result property="quantity" column="quantity"/>
+		<result property="userId" column="user_id"/>
+		<result property="deleteFlag" column="delete_flag"/>
+		<!-- 关联一个 -->
+		<association property="user" column="user_id" javaType="User" select="com.vic.mapper.UserMapper.queryById" />
+	</resultMap>
+
+	<!-- 小东西，可以简化开发 -->
+	<sql id="allColumns">
+		id, goods_name, quantity, user_id, delete_flag
+	</sql>
+
+	<!-- 根据id查询订单 -->
+	<select id="queryById" resultMap="orderResultMap">
+		select 
+		<include refid="allColumns"/> 
+		from m_order where id = #{id};
+	</select>
+
+	<!-- 插入一条数据 -->
+	<insert id="insert" parameterType="User">
+		insert into m_order(goods_name, quantity, user_id)
+		values(#{goodsName}, #{quantity}, #{userId});
+	</insert>
+
+	<!-- 插入一条数据并设置id -->
+	<insert id="insertAndGetId1" parameterType="Order" useGeneratedKeys="true" keyProperty="id">
+		insert into m_order(goods_name, quantity, user_id)
+		values(#{goodsName}, #{quantity}, #{userId});
+	</insert>
+
+	
+</mapper>
