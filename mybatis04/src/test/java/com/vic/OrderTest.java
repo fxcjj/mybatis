@@ -71,4 +71,19 @@ public class OrderTest {
 		System.out.println(order);
 	}
 
+	@Test
+	public void testOrderResultMap1() {
+		Order order = orderMapper.queryById1(1L);
+		System.out.println(order);
+		System.out.println(order.getUser());
+	}
+
+	@Test
+	public void testOrderResultMap2() {
+		Order order = orderMapper.queryById2(1L);
+		System.out.println(order);
+	}
+
+
+
 }

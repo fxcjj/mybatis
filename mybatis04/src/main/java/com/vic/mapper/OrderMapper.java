@@ -15,4 +15,7 @@ public interface OrderMapper {
 
 	int insertAndGetId1(Order order);
 
+	Order queryById1(Long id);
+
+	Order queryById2(Long id);
 }

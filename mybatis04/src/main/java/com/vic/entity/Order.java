@@ -29,4 +29,12 @@ public class Order implements Serializable {
     // 所属用户
     private User user;
 
+    public Order() {
+    }
+
+    public Order(Long id, String goodsName) {
+        this.id = id;
+        this.goodsName = goodsName;
+        System.out.println("id: " + id + ", goodsName: " + goodsName);
+    }
 }
