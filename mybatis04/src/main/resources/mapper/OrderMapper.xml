@@ -2,9 +2,26 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.vic.mapper.OrderMapper">
-	
+
+	<!-- 小东西，可以简化开发 -->
+	<sql id="allColumns">
+		id, goods_name, quantity, user_id, delete_flag
+	</sql>
+
 	<!-- 实体类属性与数据库表字段不一致时，可以在这儿指定 -->
 	<resultMap id="orderResultMap" type="Order">
+		<constructor>
+			<idArg column="id" javaType="long" />
+			<arg column="goods_name" javaType="String" />
+		</constructor>
+		<id property="id" column="id"/>
+		<result property="goodsName" column="goods_name"/>
+		<result property="quantity" column="quantity"/>
+		<result property="userId" column="user_id"/>
+		<result property="deleteFlag" column="delete_flag"/>
+	</resultMap>
+
+	<resultMap id="orderResultMap1" type="Order">
 		<constructor>
 			<idArg column="id" javaType="long" />
 			<arg column="goods_name" javaType="String" />
@@ -19,43 +36,36 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		property 指定要关联的属性名
 		column 指定m_order表中列名，此列表和property指定的属性名对应，会传递给select属性，传入多个参数使用column="{prop1=col1,prop2=col2}"
 		javaType 指定关联对象的类型（完全限定名或类型别名）
-		select 嵌套select查询
+		select 嵌套select查询，要加命名空间，只写queryUserById会找不到
 		-->
-		<association property="user" column="user_id" javaType="User" select="com.vic.mapper.UserMapper.queryById" />
+		<association property="user" column="user_id" javaType="User" select="com.vic.mapper.UserMapper.queryUserById" />
 	</resultMap>
 
-	<resultMap id="orderResultMap1" type="Order">
+	<resultMap id="orderResultMap2" type="Order">
 		<id property="id" column="id"/>
 		<result property="goodsName" column="goods_name"/>
 		<result property="quantity" column="quantity"/>
 		<result property="userId" column="user_id"/>
 		<result property="deleteFlag" column="delete_flag"/>
-		<association property="user" column="user_id" javaType="User" resultMap="userResultMap" />
+		<!--
+		 column="user_id"
+		 -->
+		<association property="user" column="user_id" javaType="User" resultMap="userResultMap2" />
 	</resultMap>
 
-	<resultMap id="userResultMap" type="User">
+	<resultMap id="userResultMap2" type="User">
 		<id property="id" column="id"/>
 		<result property="name" column="name"/>
-		<result property="age" column="age"/>
-		<result property="birthday" column="birthday"/>
-		<result property="address" column="address"/>
-		<result property="deleteFlag" column="delete_flag"/>
+		<!--<result property="user.age" column="age"/>
+		<result property="user.birthday" column="birthday"/>
+		<result property="user.address" column="address"/>
+		<result property="user.deleteFlag" column="delete_flag"/>-->
 	</resultMap>
 
-	<!-- 根据id查询订单 -->
-	<select id="queryById1" resultMap="orderResultMap1">
-		select
-		<include refid="allColumns"/>
-		from m_order where id = #{id};
-	</select>
-
-
 	<!-- association元素里关联对象类型 -->
-	<resultMap id="orderResultMap2" type="Order">
-		<constructor>
-			<idArg column="id" javaType="long" />
-			<arg column="goods_name" javaType="String" />
-		</constructor>
+	<resultMap id="orderResultMap3" type="Order">
+		<id property="id" column="id"/>
+		<result property="goodsName" column="goods_name"/>
 		<result property="quantity" column="quantity"/>
 		<result property="userId" column="user_id"/>
 		<result property="deleteFlag" column="delete_flag"/>
@@ -70,18 +80,32 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</resultMap>
 
 	<!-- 根据id查询订单 -->
+	<select id="queryByUserId" resultMap="orderResultMap">
+		select
+		<include refid="allColumns"/>
+		from m_order where user_id = #{id};
+	</select>
+
+	<!-- 根据id查询订单 -->
+	<select id="queryById3" resultMap="orderResultMap3">
+		select
+		<include refid="allColumns"/>
+		from m_order where id = #{id};
+	</select>
+
+	<!-- 根据id查询订单 -->
 	<select id="queryById2" resultMap="orderResultMap2">
 		select
 		<include refid="allColumns"/>
 		from m_order where id = #{id};
 	</select>
 
-
-
-	<!-- 小东西，可以简化开发 -->
-	<sql id="allColumns">
-		id, goods_name, quantity, user_id, delete_flag
-	</sql>
+	<!-- 根据id查询订单 -->
+	<select id="queryById1" resultMap="orderResultMap1">
+		select
+		<include refid="allColumns"/>
+		from m_order where id = #{id};
+	</select>
 
 	<!-- 根据id查询订单 -->
 	<select id="queryById" resultMap="orderResultMap">

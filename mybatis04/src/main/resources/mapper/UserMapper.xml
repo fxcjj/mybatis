@@ -2,7 +2,12 @@
 PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.vic.mapper.UserMapper">
-	
+
+	<!-- 小东西，可以简化开发 -->
+	<sql id="allColumns">
+		id, name, age, birthday, address, delete_flag
+	</sql>
+
 	<!-- 实体类属性与数据库表字段不一致时，可以在这儿指定 -->
 	<resultMap id="userResultMap" type="User">
 		<!-- property指定javabean主键，cloumn指定数据表字段主键 -->
@@ -15,11 +20,42 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="deleteFlag" column="delete_flag"/>
 	</resultMap>
 
-	<!-- 小东西，可以简化开发 -->
-	<sql id="allColumns">
-		id, name, age, birthday, address, delete_flag
-	</sql>
-	
+	<!-- 测试一对多 collection元素的select属性 -->
+	<resultMap id="userResultMap1" type="User">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="age" column="age"/>
+		<result property="birthday" column="birthday"/>
+		<result property="address" column="address"/>
+		<result property="deleteFlag" column="delete_flag"/>
+		<!--
+		javaType="ArrayList" 这句可省略
+		-->
+		<collection property="orders" column="id" ofType="Order" select="com.vic.mapper.OrderMapper.queryByUserId" />
+	</resultMap>
+
+	<!-- 测试一对多 collection元素的resultMap属性 -->
+	<resultMap id="userResultMap2" type="User">
+		<id property="id" column="id"/>
+		<result property="name" column="name"/>
+		<result property="age" column="age"/>
+		<result property="birthday" column="birthday"/>
+		<result property="address" column="address"/>
+		<result property="deleteFlag" column="delete_flag"/>
+		<!--
+		javaType="ArrayList" 这句可省略
+		-->
+		<collection property="orders" ofType="Order" resultMap="orderResultMap2" />
+	</resultMap>
+
+	<resultMap id="orderResultMap2" type="Order">
+		<id property="id" column="id" />
+		<result property="goodsName" column="goods_name" />
+		<result property="quantity" column="quantity" />
+		<result property="userId" column="user_id" />
+		<result property="deleteFlag" column="delete_flag" />
+	</resultMap>
+
 	<!-- 通过ids查询数据集合 -->
 	<select id="queryByIds" resultMap="userResultMap">
 		select 
@@ -49,9 +85,21 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	    如果入参为1个参数，可以不用写入参类型
  		如：parameterType="long" 可以省略
 	-->
-	<select id="queryById" resultMap="userResultMap"><!-- resultType="User" -->
+	<select id="queryUserById" resultMap="userResultMap"><!-- resultType="User" -->
 		select 
 		<include refid="allColumns"/> 
+		from m_user where id = #{id};
+	</select>
+
+	<select id="queryUserById1" resultMap="userResultMap1">
+		select
+		<include refid="allColumns"/>
+		from m_user where id = #{id};
+	</select>
+
+	<select id="queryUserById2" resultMap="userResultMap2">
+		select
+		<include refid="allColumns"/>
 		from m_user where id = #{id};
 	</select>
 	

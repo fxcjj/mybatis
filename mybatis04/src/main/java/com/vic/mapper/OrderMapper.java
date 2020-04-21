@@ -18,4 +18,6 @@ public interface OrderMapper {
 	Order queryById1(Long id);
 
 	Order queryById2(Long id);
+
+	Order queryById3(Long id);
 }

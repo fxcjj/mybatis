@@ -4,9 +4,14 @@
     <list default="true" id="4f697509-cef0-4ae4-824c-67932ed221e9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mybatis04/src/main/java/com/vic/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis04/src/main/java/com/vic/entity/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis04/src/main/java/com/vic/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis04/src/main/java/com/vic/entity/User.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mybatis04/src/main/java/com/vic/mapper/OrderMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis04/src/main/java/com/vic/mapper/OrderMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis04/src/main/java/com/vic/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis04/src/main/java/com/vic/mapper/UserMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mybatis04/src/main/resources/mapper/OrderMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis04/src/main/resources/mapper/OrderMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis04/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis04/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis04/src/main/resources/mybatis-config.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis04/src/main/resources/mybatis-config.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mybatis04/src/test/java/com/vic/OrderTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis04/src/test/java/com/vic/OrderTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis04/src/test/java/com/vic/UserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis04/src/test/java/com/vic/UserTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -81,7 +86,7 @@
       <recent name="D:\github\mybatis\mybatis03\src\main\java\com\vic" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.OrderTest.testOrderResultMap1">
+  <component name="RunManager" selected="JUnit.OrderTest.testOrderResultMap3">
     <configuration name="OrderTest.testInsert" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mybatis04" />
       <extension name="coverage">
@@ -93,22 +98,6 @@
       <option name="PACKAGE_NAME" value="com.vic" />
       <option name="MAIN_CLASS_NAME" value="com.vic.OrderTest" />
       <option name="METHOD_NAME" value="testInsert" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="OrderTest.testOrderResultMap1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="mybatis04" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.vic.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.vic" />
-      <option name="MAIN_CLASS_NAME" value="com.vic.OrderTest" />
-      <option name="METHOD_NAME" value="testOrderResultMap1" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -130,7 +119,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="OrderTest.testQueryById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="OrderTest.testOrderResultMap3" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mybatis04" />
       <extension name="coverage">
         <pattern>
@@ -140,13 +129,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.vic" />
       <option name="MAIN_CLASS_NAME" value="com.vic.OrderTest" />
-      <option name="METHOD_NAME" value="testQueryById" />
+      <option name="METHOD_NAME" value="testOrderResultMap3" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="UserTest.testBatchInsert" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserTest.testQueryById1" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="mybatis04" />
       <extension name="coverage">
         <pattern>
@@ -156,7 +145,23 @@
       </extension>
       <option name="PACKAGE_NAME" value="com.vic" />
       <option name="MAIN_CLASS_NAME" value="com.vic.UserTest" />
-      <option name="METHOD_NAME" value="testBatchInsert" />
+      <option name="METHOD_NAME" value="testQueryById1" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="UserTest.testQueryById2" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="mybatis04" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.vic.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.vic" />
+      <option name="MAIN_CLASS_NAME" value="com.vic.UserTest" />
+      <option name="METHOD_NAME" value="testQueryById2" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -164,11 +169,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.OrderTest.testOrderResultMap1" />
+        <item itemvalue="JUnit.OrderTest.testOrderResultMap3" />
         <item itemvalue="JUnit.OrderTest.testOrderResultMap2" />
-        <item itemvalue="JUnit.OrderTest.testQueryById" />
+        <item itemvalue="JUnit.UserTest.testQueryById2" />
+        <item itemvalue="JUnit.UserTest.testQueryById1" />
         <item itemvalue="JUnit.OrderTest.testInsert" />
-        <item itemvalue="JUnit.UserTest.testBatchInsert" />
       </list>
     </recent_temporary>
   </component>
@@ -187,7 +192,8 @@
       <workItem from="1560736068426" duration="1634000" />
       <workItem from="1586311783994" duration="29199000" />
       <workItem from="1586497724890" duration="16918000" />
-      <workItem from="1586780864088" duration="6883000" />
+      <workItem from="1586780864088" duration="9547000" />
+      <workItem from="1587350940784" duration="11134000" />
     </task>
     <task id="LOCAL-00001" summary="mybatis glance">
       <created>1586340623746</created>
@@ -245,7 +251,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587008523593</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="association元素">
+      <created>1587036035434</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1587036035434</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -259,17 +272,18 @@
     <MESSAGE value="typeHandler,objectFactory,mappers" />
     <MESSAGE value="return id after insert data" />
     <MESSAGE value="添加OrderMapper" />
-    <option name="LAST_COMMIT_MESSAGE" value="添加OrderMapper" />
+    <MESSAGE value="association元素" />
+    <option name="LAST_COMMIT_MESSAGE" value="association元素" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="178" key="#Project_Structure" timestamp="1586500432700">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="552" y="178" key="#Project_Structure/0.0.1920.1040@0.0.1920.1040" timestamp="1586500432700" />
-    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1587033974491">
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser" timestamp="1587463758615">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1587033974491" />
+    <state x="765" y="229" key="#com.intellij.ide.util.MemberChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1587463758615" />
     <state x="666" y="445" key="#com.intellij.refactoring.move.MoveHandler.SelectRefactoringDialog" timestamp="1586341178462">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -278,10 +292,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="546" y="0" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1586339507602" />
-    <state x="494" y="113" key="CommitChangelistDialog2" timestamp="1587008523005">
+    <state x="494" y="113" key="CommitChangelistDialog2" timestamp="1587036034941">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="494" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1587008523005" />
+    <state x="494" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1587036034941" />
     <state width="445" height="466" key="DebuggerActiveHint" timestamp="1586402739343">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -294,22 +308,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1586500366231" />
-    <state width="1877" height="211" key="GridCell.Tab.0.bottom" timestamp="1587035968440">
+    <state width="1877" height="300" key="GridCell.Tab.0.bottom" timestamp="1587466702455">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="211" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587035968440" />
-    <state width="1877" height="211" key="GridCell.Tab.0.center" timestamp="1587035968440">
+    <state width="1877" height="300" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587466702455" />
+    <state width="1877" height="300" key="GridCell.Tab.0.center" timestamp="1587466702455">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="211" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587035968440" />
-    <state width="1877" height="211" key="GridCell.Tab.0.left" timestamp="1587035968440">
+    <state width="1877" height="300" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587466702455" />
+    <state width="1877" height="300" key="GridCell.Tab.0.left" timestamp="1587466702454">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="211" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587035968440" />
-    <state width="1877" height="211" key="GridCell.Tab.0.right" timestamp="1587035968440">
+    <state width="1877" height="300" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587466702454" />
+    <state width="1877" height="300" key="GridCell.Tab.0.right" timestamp="1587466702455">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="211" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587035968440" />
+    <state width="1877" height="300" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587466702455" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1586497698044">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -334,10 +348,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="681" y="261" width="540" height="524" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1586339754752" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1587008524960">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1587036037479">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1587008524960" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1587036037479" />
     <state x="759" y="298" key="chooseDestDirectoryDialog" timestamp="1586341165893">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

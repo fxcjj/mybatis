@@ -35,6 +35,7 @@ public class Order implements Serializable {
     public Order(Long id, String goodsName) {
         this.id = id;
         this.goodsName = goodsName;
-        System.out.println("id: " + id + ", goodsName: " + goodsName);
+//        System.out.println("id: " + id + ", goodsName: " + goodsName);
     }
+
 }

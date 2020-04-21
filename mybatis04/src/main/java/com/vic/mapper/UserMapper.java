@@ -18,8 +18,12 @@ public interface UserMapper {
 	 * @param id
 	 * @return
 	 */
-	User queryById(Long id);
-	
+	User queryUserById(Long id);
+
+	User queryUserById1(Long id);
+
+	User queryUserById2(Long id);
+
 	/**
 	 * 新增用户
 	 * @param user

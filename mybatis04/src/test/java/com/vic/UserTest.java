@@ -75,9 +75,32 @@ public class UserTest {
 		System.out.println(row); //3
 	}
 
+	/**
+	 * 仅仅查询单个
+	 */
 	@Test
 	public void testQueryById() {
-		User user = userMapper.queryById(1L);
+		User user = userMapper.queryUserById(1L);
+		System.out.println(user);
+	}
+
+	/**
+	 * 测试collection元素的select属性
+	 * 注意每个Order中有user属性！
+	 */
+	@Test
+	public void testQueryById1() {
+		User user = userMapper.queryUserById1(13L);
+		System.out.println(user);
+	}
+
+	/**
+	 * 测试collection元素的resultMap属性
+	 * 注意每个Order中有user属性！
+	 */
+	@Test
+	public void testQueryById2() {
+		User user = userMapper.queryUserById2(13L);
 		System.out.println(user);
 	}
 

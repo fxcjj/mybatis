@@ -58,29 +58,48 @@ public class OrderTest {
 	@Test
 	public void testInsert() {
 		Order order = new Order();
-		order.setGoodsName("gn1");
-		order.setQuantity(3);
+		order.setGoodsName("gn2");
+		order.setQuantity(5);
 		order.setUserId(13L);
 		int row = orderMapper.insert(order);
 		System.out.println(row);
 	}
 
+	/**
+	 * 只查询Order
+	 */
 	@Test
 	public void testQueryById() {
 		Order order = orderMapper.queryById(1L);
 		System.out.println(order);
 	}
 
+	/**
+	 * 测试使用association元素的select属性
+	 */
 	@Test
 	public void testOrderResultMap1() {
 		Order order = orderMapper.queryById1(1L);
-		System.out.println(order);
-		System.out.println(order.getUser());
+		System.out.println(order); // ok, 注意User中的orders属性为null
 	}
 
+	/**
+	 * 测试使用association元素的resultMap属性
+	 * 未测试通过！
+	 */
 	@Test
 	public void testOrderResultMap2() {
 		Order order = orderMapper.queryById2(1L);
+		System.out.println(order);
+	}
+
+	/**
+	 * 测试使用association元素下指定关联的领域模型与表关系
+	 * 未测试通过！
+	 */
+	@Test
+	public void testOrderResultMap3() {
+		Order order = orderMapper.queryById3(1L);
 		System.out.println(order);
 	}
 

@@ -19,6 +19,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 	<!-- 指定mybatis使用log4j日志 -->
 	<settings>
 		<setting name="logImpl" value="LOG4J" />
+		<setting name="mapUnderscoreToCamelCase" value="true"/>
 	</settings>
 
 	<!-- 别名 -->
