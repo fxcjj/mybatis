@@ -96,7 +96,7 @@ public class UserTest {
 
 	/**
 	 * 测试collection元素的resultMap属性
-	 * 注意每个Order中有user属性！
+	 * 未测试通过！
 	 */
 	@Test
 	public void testQueryById2() {

@@ -1,9 +1,9 @@
 package com.vic.mapper;
 
 import com.vic.entity.Student;
+import org.apache.ibatis.annotations.Update;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author Victor
@@ -18,29 +18,73 @@ public interface StudentMapper {
 	Student queryUserById(Long id);
 
 	/**
-	 * 根据ids查询用户列表
-	 * @return
-	 */
-	List<Student> queryByIds(List<Long> idList);
-
-	/**
 	 * 新增
 	 * @param student
 	 */
 	int insert(Student student);
 
 	/**
+	 * 查询正常学生、姓名模糊匹配
+	 * @param s
+	 * @return
+	 */
+	List<Student> findNormalStudentWithNameLike(Student s);
+
+	/**
+	 * 测试choose,when,otherwise
+	 * @param s
+	 * @return
+	 */
+	List<Student> testChoose(Student s);
+
+	/**
+	 * 测试where
+	 * @param s
+	 * @return
+	 */
+	List<Student> testWhere(Student s);
+
+	/**
+	 * 使用trim代替where
+	 * @param s
+	 * @return
+	 */
+	List<Student> testTrimInsteadOfWhere(Student s);
+
+	/**
+	 * 测试set
+	 * @param s
+	 * @return
+	 */
+	int testSet(Student s);
+
+	/**
+	 * 使用trim代替set
+	 * @param s
+	 * @return
+	 */
+	int testTrimInsteadOfSet(Student s);
+
+	/**
 	 * 更新用户
 	 * @param student
 	 */
-	Integer update(Student student);
-	
+	Integer updateAnyway(Student student);
+
+
 	/**
-	 * 选择更新
-	 * @param student
+	 * foreach
+	 * @param ids
+	 * @return
 	 */
-	Integer updateBySelective(Student student);
-	
+	List<Student> findStudentIn1(List<Long> ids);
+
+	/**
+	 * foreach
+	 * @return
+	 */
+	List<Student> findStudentIn2(List<Long> ids);
+
 	/**
 	 * 逻辑删除用户
 	 * @param id
@@ -49,10 +93,26 @@ public interface StudentMapper {
 	Integer delete(Long id);
 
 	/**
-	 * 模糊分页查询
-	 * @param param
+	 * 使用注解更新
+	 * @param s
 	 * @return
 	 */
-	List<Student> fuzzyByCondition(Map<String, Object> param);
+	@Update({"</script>",
+		"update Student",
+		"<set>",
+		"	<if test='name != null'>name = #{name},</if>",
+		"	<if test='age != null'>age = #{age},</if>",
+		"	<if test='birthday != null'>birthday = #{birthday},</if>",
+		"	<if test='address != null'>address = #{address}</if>",
+		"</set>",
+		"where id = #{id}",
+	"</script>"})
+	int testUpdateWithScriptElement(Student s);
 
+	/**
+	 * 测试bind元素
+	 * @param s
+	 * @return
+	 */
+	List<Student> testBindElement(Student s);
 }

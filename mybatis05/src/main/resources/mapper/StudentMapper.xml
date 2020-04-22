@@ -18,7 +18,6 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<result property="deleteFlag" column="delete_flag"/>
 	</resultMap>
 
-
 	<select id="queryUserById" resultMap="studentResultMap"><!-- resulttype="Student" -->
 		select 
 		<include refid="allColumns"/> 
@@ -31,8 +30,118 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		values(#{name}, #{age}, #{birthday}, #{address}, 1);
 	</insert>
 
+	<select id="findNormalStudentWithNameLike" resultMap="studentResultMap">
+		select
+		<include refid="allColumns" />
+		from m_student
+		where delete_flag = 1
+		<if test="name != null">
+			and name like CONCAT('%',#{name},'%')
+		</if>
+	</select>
+
+	<select id="testChoose" resultMap="studentResultMap">
+		select
+		<include refid="allColumns" />
+		from m_student
+		where delete_flag = 1
+		<choose>
+			<when test="name != null">
+				and name like CONCAT('%',#{name},'%')
+			</when>
+			<when test="address != null">
+				and address like CONCAT('%',#{address},'%')
+			</when>
+			<otherwise>
+				and age &gt; 1
+			</otherwise>
+		</choose>
+	</select>
+
+	<!-- 动态条件 -->
+	<select id="testWhere" resultMap="studentResultMap">
+		select
+		<include refid="allColumns" />
+		from m_student
+		<where>
+			<if test="name != null">
+				and name like CONCAT('%',#{name},'%')
+			</if>
+			<if test="address != null">
+				and address like CONCAT('%',#{address},'%')
+			</if>
+		</where>
+	</select>
+
+	<!-- 和testWhere等价 -->
+	<select id="testTrimInsteadOfWhere" resultMap="studentResultMap">
+		select
+		<include refid="allColumns" />
+		from m_student
+		<trim prefix="WHERE" prefixOverrides="AND |OR ">
+			<if test="name != null">
+				and name like CONCAT('%',#{name},'%')
+			</if>
+			<if test="address != null">
+				and address like CONCAT('%',#{address},'%')
+			</if>
+		</trim>
+	</select>
+
+	<!-- 不为空时更新字段，注意每个条件中的逗号要有，最后一个不用加 -->
+	<update id="testSet" parameterType="Student">
+		update m_student
+		<set>
+			<if test="name != null">
+				name = #{name},
+			</if>
+			<if test="age != null">
+				age = #{age},
+			</if>
+			<if test="birthday != null">
+				birthday = #{birthday},
+			</if>
+			<if test="address != null">
+				address = #{address}
+			</if>
+		</set>
+		where id = #{id};
+	</update>
+
+	<!-- 和testSet等价 -->
+	<update id="testTrimInsteadOfSet" parameterType="Student">
+		update m_student
+		<trim prefix="SET" suffixOverrides=",">
+			<if test="name != null">
+				name = #{name},
+			</if>
+			<if test="age != null">
+				age = #{age},
+			</if>
+			<if test="birthday != null">
+				birthday = #{birthday},
+			</if>
+			<if test="address != null">
+				address = #{address}
+			</if>
+		</trim>
+		where id = #{id};
+	</update>
+
+	<!-- foreach -->
+	<select id="findStudentIn1" resultMap="studentResultMap">
+		select
+		<include refid="allColumns" />
+		from m_student
+		where delete_flag = 1
+		and id in
+		<foreach item="item" index="index" collection="list" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</select>
+
 	<!-- 通过ids查询数据集合 -->
-	<select id="queryByIds" resultMap="studentResultMap">
+	<select id="findStudentIn2" resultMap="studentResultMap">
 		select
 		<include refid="allColumns" />
 		from m_student
@@ -52,7 +161,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 
 	<!-- 根据id修改数据 -->
-	<update id="update" parameterType="Student">
+	<update id="updateAnyway" parameterType="Student">
 		update m_student
 		set name=#{name},
 		<if test="age != null"><!-- and age != '' 当值允许为0时，此条件不能加！ -->
@@ -63,38 +172,13 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		where id=#{id};
 	</update>
 
-	<!-- 动态sql：动态更新 -->
-	<update id="updateBySelective" parameterType="Student">
-		update m_student
-		<set>
-			<if test="name != null">
-				name = #{name},
-			</if>
-			<if test="age != null">
-				age = #{age}
-			</if>
-			<if test="birthday != null">
-				birthday = #{birthday}
-			</if>
-			<if test="address != null">
-				address = #{address}
-			</if>
-		</set>
-		where id = #{id};
-	</update>
-
-	<!-- 动态sql：模糊查询 -->
-	<select id="fuzzyByCondition" parameterType="hashmap" resultMap="studentResultMap">
+	<!-- bind -->
+	<select id="testBindElement" resultMap="studentResultMap">
+		<bind name="namePattern" value="'%' + _parameter.getName() + '%'"/>
 		select
-		<include refid="allColumns"/>
-		from m_student where 1=1
-		<if test="name != null">
-			and name like concat('%',#{name},'%')
-		</if>
-		<if test="hello != null">
-			and address like concat('%',#{hello},'%')
-		</if>
-		limit #{startIndex}, #{pageSize}
+		<include refid="allColumns" />
+		from m_student
+		where name like #{namePattern}
 	</select>
 
 	<!-- 逻辑删除用户 -->

@@ -68,6 +68,7 @@
 		</environment>
 	</environments>
 
+	<databaseIdProvider type=""></databaseIdProvider>
 	<!-- 映射文件 -->
 	<mappers>
 		<mapper resource="mapper/StudentMapper.xml" />
