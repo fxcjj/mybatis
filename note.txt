@@ -1,6 +1,3 @@
 
-当前进度
-https://www.cnblogs.com/dongying/p/4040435.html
-
-当前进度
-https://mybatis.org/mybatis-3/zh/sqlmap-xml.html
+英文官网地址
+https://mybatis.org/mybatis-3/
