@@ -7,7 +7,7 @@ import java.util.Properties;
 
 /**
  * 自定义objectFactory
- * @author 罗利华
+ * @author Victor
  * date: 2020/4/9 11:18
  */
 public class SterilizeObjectFactory extends DefaultObjectFactory {

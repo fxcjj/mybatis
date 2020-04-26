@@ -7,7 +7,7 @@ import java.util.Properties;
 
 /**
  * 自定义plugin
- * @author 罗利华
+ * @author Victor
  * date: 2020/4/9 11:31
  */
 public class AdverselyPlugin implements Interceptor {
