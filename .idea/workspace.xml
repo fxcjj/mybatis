@@ -3,7 +3,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4f697509-cef0-4ae4-824c-67932ed221e9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/mybatis06/readme.txt" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis06/readme.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis06/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/mybatis06/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mybatis06/src/test/java/com/vic/WowTest.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +58,7 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1560820550014" />
     <property name="jdk.selected.JAVA_MODULE" value="1.8" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/mybatis06" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/mybatis06/src/main" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -69,14 +70,15 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.vic" />
       <recent name="com.vic.mapper" />
+      <recent name="com.vic.entity" />
       <recent name="vic" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\github\mybatis\mybatis06\src\main" />
       <recent name="D:\github\mybatis\mybatis06" />
       <recent name="D:\github\mybatis\mybatis05" />
       <recent name="D:\github\mybatis\mybatis05\src\main\resources" />
       <recent name="D:\github\mybatis\mybatis05\src\main\java\com\vic" />
-      <recent name="D:\github\mybatis\mybatis05\src\main\java" />
     </key>
   </component>
   <component name="RunManager" selected="JUnit.UserTest.testQueryById1">
@@ -187,7 +189,8 @@
       <workItem from="1586497724890" duration="16918000" />
       <workItem from="1586780864088" duration="9547000" />
       <workItem from="1587350940784" duration="24051000" />
-      <workItem from="1587867228465" duration="7288000" />
+      <workItem from="1587867228465" duration="10365000" />
+      <workItem from="1587980338830" duration="74000" />
     </task>
     <task id="LOCAL-00001" summary="mybatis glance">
       <created>1586340623746</created>
@@ -280,7 +283,14 @@
       <option name="project" value="LOCAL" />
       <updated>1587899454787</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="add comment">
+      <created>1587953065732</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1587953065732</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -299,7 +309,8 @@
     <MESSAGE value="supplement note" />
     <MESSAGE value="supplement readme" />
     <MESSAGE value="update author" />
-    <option name="LAST_COMMIT_MESSAGE" value="update author" />
+    <MESSAGE value="add comment" />
+    <option name="LAST_COMMIT_MESSAGE" value="add comment" />
   </component>
   <component name="WindowStateProjectService">
     <state x="552" y="178" key="#Notifications" timestamp="1587523968402">
@@ -326,10 +337,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="690" y="266" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1587522030659" />
-    <state x="494" y="113" key="CommitChangelistDialog2" timestamp="1587953037505">
+    <state x="494" y="113" key="CommitChangelistDialog2" timestamp="1587953065260">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="494" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1587953037505" />
+    <state x="494" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1587953065260" />
     <state width="445" height="466" key="DebuggerActiveHint" timestamp="1586402739343">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -342,22 +353,22 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="740" y="275" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1587867282045" />
-    <state width="1877" height="214" key="GridCell.Tab.0.bottom" timestamp="1587867975988">
+    <state width="1877" height="213" key="GridCell.Tab.0.bottom" timestamp="1587980313750">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="214" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587867975988" />
-    <state width="1877" height="214" key="GridCell.Tab.0.center" timestamp="1587867975988">
+    <state width="1877" height="213" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1587980313750" />
+    <state width="1877" height="213" key="GridCell.Tab.0.center" timestamp="1587980313750">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="214" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587867975988" />
-    <state width="1877" height="214" key="GridCell.Tab.0.left" timestamp="1587867975988">
+    <state width="1877" height="213" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1587980313750" />
+    <state width="1877" height="213" key="GridCell.Tab.0.left" timestamp="1587980313750">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="214" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587867975988" />
-    <state width="1877" height="214" key="GridCell.Tab.0.right" timestamp="1587867975988">
+    <state width="1877" height="213" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1587980313750" />
+    <state width="1877" height="213" key="GridCell.Tab.0.right" timestamp="1587980313750">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="214" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587867975988" />
+    <state width="1877" height="213" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1587980313750" />
     <state width="1877" height="348" key="GridCell.Tab.1.bottom" timestamp="1586497698044">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -386,10 +397,10 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="681" y="261" width="582" height="524" key="StructurePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1587952882523" />
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1587899455933">
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2" timestamp="1587953067090">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1587899455933" />
+    <state x="552" y="253" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1587953067090" />
     <state x="759" y="298" key="chooseDestDirectoryDialog" timestamp="1586341165893">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -406,9 +417,9 @@
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="342" y="131" key="new project wizard/0.0.1920.1040@0.0.1920.1040" timestamp="1587867298368" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1587871189573">
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1587974988812">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587871189573" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1587974988812" />
   </component>
 </project>
