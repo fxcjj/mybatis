@@ -123,6 +123,17 @@ public class StudentTest {
 	}
 
 	/**
+	 * choose、when、otherwise
+	 * 测试传入固定值
+	 */
+	@Test
+	public void testChoose2() {
+		String s = "2";
+		List<Student> list = studentMapper.testChoose2(s);
+		System.out.println(list);
+	}
+
+	/**
 	 * trim、where、set
 	 */
 	@Test

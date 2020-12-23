@@ -38,6 +38,13 @@ public interface StudentMapper {
 	List<Student> testChoose(Student s);
 
 	/**
+	 * 测试choose,when,otherwise
+	 * @param flag
+	 * @return
+	 */
+	List<Student> testChoose2(String flag);
+
+	/**
 	 * 测试where
 	 * @param s
 	 * @return

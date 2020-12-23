@@ -58,6 +58,24 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		</choose>
 	</select>
 
+	<select id="testChoose2" resultMap="studentResultMap">
+		select
+		<include refid="allColumns" />
+		from m_student
+		where 1=1
+		<choose>
+			<when test='flag == "1"'>
+				and delete_flag = 1
+			</when>
+			<when test="flag == '2'.toString()">
+				and delete_flag = 2
+			</when>
+			<otherwise>
+				and delete_flag = 3
+			</otherwise>
+		</choose>
+	</select>
+
 	<!-- 动态条件 -->
 	<select id="testWhere" resultMap="studentResultMap">
 		select
